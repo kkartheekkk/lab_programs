@@ -27,3 +27,38 @@ return false;
 } 
 // Check if the next two characters are alphabets (e.g., "MN" for serial number) 
 for (int i = 4; i < 6; i++)  
+    { 
+        if (!isalpha(registration[i]))  
+        { 
+            return false; 
+        } 
+    } 
+ 
+    // Check if the penultimate two characters are numbers (e.g., "3865" for vehicle number) 
+    for (int i = 6; i < 10; i++)  
+    { 
+        if (!isdigit(registration[i]))  
+        { 
+            return false; 
+        } 
+    } 
+ 
+    return true; 
+} 
+ 
+int main() { 
+    char registration[11];  
+    printf("Enter a vehicle registration number: "); 
+    scanf("%s", registration); 
+ 
+    if (verifyRegistration(registration))  
+    { 
+        printf("Accept: Vehicle registration number is valid.\n"); 
+    }  
+    else  
+    { 
+        printf("Reject: Vehicle registration number is invalid.\n"); 
+    } 
+ 
+    return 0; 
+} 
